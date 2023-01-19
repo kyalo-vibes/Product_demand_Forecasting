@@ -44,7 +44,7 @@ We started the full stack application for you. It is designed with some key func
 
 ### lighgbmmodel
 
-The [model](./lightgbmmodel.ipynb) notebook contains a our implementation of the lightgbm model to perform prediction of sales when given date range, store and item values. Our workflow involved:
+The [model](./lightgbm_model.ipynb) notebook contains a our implementation of the lightgbm model to perform prediction of sales when given date range, store and item values. Our workflow involved:
 1. `Exploratory Data Analysis`
 2. `Feature Engineering`
 3. `Base Model`
@@ -52,7 +52,7 @@ The [model](./lightgbmmodel.ipynb) notebook contains a our implementation of the
 5. `Hyperparameter Tuning`
 6. `Final Model`
 
-> View the [notebook](./lightgbmmodel.ipynb) for more details.
+> View the [notebook](./lightgbm_model.ipynb) for more details.
 
 ### App
 
