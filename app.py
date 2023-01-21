@@ -26,7 +26,7 @@ def generate_combinations(start_date, end_date, store, item):
 
 
 # API to load index page
-@app.route('/')
+@app.route('/', methods = ['POST', 'GET'])
 def index():
     return render_template('index.html')
 
@@ -78,11 +78,16 @@ def predict():
         for i in range(len(prediction)):
             input_data.at[i,'sales'] = prediction[i]
         print(input_data)
-        result = input_data.to_json(orient="index")
-        print(result)
-
+        data = input_data.to_json('result.json', orient="index")
+        print(data)
         # Return the result as a json object
-        return jsonify(result)
+        return render_template('result.html' , data = input_data.to_json(orient="index"))
+    
+    @app.route('/result', methods = ['POST', 'GET'])
+    def result():
+        return render_template('result.html', data=result)
+
+
 
 if __name__=="__main__":
     app.run(debug=True)
