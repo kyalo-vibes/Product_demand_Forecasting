@@ -19,11 +19,11 @@
     </table>
     <script>
         $(document).ready(function() {
-            var data = JSON.parse('{{ data|safe }}');
+            let data = ('{{ data|tojson|safe }}');
             var tableBody = $('#data-table-body');
             $.each(data, function(index, value) {
                 var row = $('<tr>');
-                row.append($('<td>').text(new Date(value.date)));
+                row.append($('<td>').text(new Date(value.date).toLocaleDateString()));
                 row.append($('<td>').text(value.store));
                 row.append($('<td>').text(value.item));
                 row.append($('<td>').text(value.sales));

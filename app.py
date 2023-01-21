@@ -77,11 +77,22 @@ def predict():
         # input the prediction into the input_data dataframe in the sales column
         for i in range(len(prediction)):
             input_data.at[i,'sales'] = prediction[i]
+        input_data['sales'] = input_data['sales'].astype(int)
         print(input_data)
-        data = input_data.to_json('result.json', orient="index")
+        table = input_data.to_html()
+        # print(table)
+        # write html to file
+        with open("./templates/hardcode.html", "w") as file:
+            pass
+        css = "<style>    table {        font-family: Arial, sans-serif;        background-color: #f2f2f2;    }    th {        background-color: #4CAF50;        color: white;        padding: 8px;        text-align: left;    }    td {        border: 1px solid #ddd;        padding: 8px;    }    tr:hover {        background-color: #ddd;    }</style>"
+        text_file = open("./templates/hardcode.html", "w")
+        text_file.write(css)
+        text_file.write(table)
+        text_file.close()
+        data = input_data.to_json('result.json', orient="records")
         print(data)
         # Return the result as a json object
-        return render_template('result.html' , data = input_data.to_json(orient="index"))
+        return render_template('hardcode.html')
     
     @app.route('/result', methods = ['POST', 'GET'])
     def result():
