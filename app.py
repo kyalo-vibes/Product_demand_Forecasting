@@ -82,17 +82,17 @@ def predict():
         table = input_data.to_html()
         # print(table)
         # write html to file
-        with open("./templates/hardcode.html", "w") as file:
+        with open("./templates/result.html", "w") as file:
             pass
         css = "<style>    table {        font-family: Arial, sans-serif;        background-color: #f2f2f2;    }    th {        background-color: #4CAF50;        color: white;        padding: 8px;        text-align: left;    }    td {        border: 1px solid #ddd;        padding: 8px;    }    tr:hover {        background-color: #ddd;    }</style>"
-        text_file = open("./templates/hardcode.html", "w")
+        text_file = open("./templates/result.html", "w")
         text_file.write(css)
         text_file.write(table)
         text_file.close()
         data = input_data.to_json('result.json', orient="records")
         print(data)
         # Return the result as a json object
-        return render_template('hardcode.html')
+        return render_template('result.html')
     
     @app.route('/result', methods = ['POST', 'GET'])
     def result():

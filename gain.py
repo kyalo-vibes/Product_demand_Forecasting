@@ -216,7 +216,7 @@ def lgbm_smape(y_true, y_pred):
     smape_val = smape(y_true, y_pred)
     return 'SMAPE', smape_val, False
 
-first_model = lgb.LGBMRegressor(random_state=384).fit(X_train, Y_train, 
+first_model = lgb.LGBMRegressor(random_state=384, num_leaves=31, n_estimators=700, max_depth=10, metric = "custom").fit(X_train, Y_train, 
                                                       eval_metric= lambda y_true, y_pred: [lgbm_smape(y_true, y_pred)])
 
 
